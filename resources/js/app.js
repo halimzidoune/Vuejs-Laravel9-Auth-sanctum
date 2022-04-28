@@ -3,11 +3,7 @@ require('./bootstrap');
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-// Import Bootstrap an BootstrapVue CSS files (order is important)
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
-
+import vuetify from './vuetify';
 
 import App from "./components/App";
 
@@ -21,10 +17,6 @@ import store from "./store";
 
 window.Vue = require('vue').default;
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue);
-// Optionally install the BootstrapVue icon components plugin
-Vue.use(IconsPlugin);
 
 Vue.use(VueRouter);
 
@@ -43,6 +35,7 @@ store.dispatch("auth/getUser").then((res) => {
     render: (h) => h(App),
     router,
     store,
+    vuetify
   });
 });
 
