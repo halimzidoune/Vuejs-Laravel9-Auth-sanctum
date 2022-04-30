@@ -40,6 +40,7 @@ export default {
       return axios.get("/logout").then(() => {
         commit("setUser", {});
         commit("setAuthenticated", false);
+        this.$router.push({name: 'login'})
       });
     },
   },

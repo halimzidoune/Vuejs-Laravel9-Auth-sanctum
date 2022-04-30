@@ -9,10 +9,13 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     </head>
     <body >
         <div id="app"></div>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+
     </body>
     <script src="js/app.js"></script>
 </html>

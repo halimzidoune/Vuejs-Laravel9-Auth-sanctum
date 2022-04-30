@@ -12,7 +12,8 @@ const routes = [
     path: "/",
     component: Public,
     children: [
-      {
+      { 
+        name: 'home',
         path: "/",
         component: Login,
       },

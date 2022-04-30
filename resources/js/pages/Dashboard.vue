@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h5>Dashboard</h5>
+        <v-main>
+            <p class="text-h1">
+              Dashborard  
+            </p>
+        </v-main>
     </div>
 </template>
 <script>

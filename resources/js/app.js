@@ -7,7 +7,6 @@ import vuetify from './vuetify';
 
 import App from "./components/App";
 
-import "./globalComponents";
 
 import router from './router';
 

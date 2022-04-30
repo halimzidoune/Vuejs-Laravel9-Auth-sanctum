@@ -1,63 +1,74 @@
-//resources/js/pages/Login.vue
 <template>
   <div>
-    <b-container class="mt-5">
-      <b-row class="justify-content-center">
-        <b-col md="5">
-          <h2>Login</h2>
-          <br />
-          <b-alert v-model="showDismissibleAlert" variant="danger" dismissible>
-            {{ serverError }}
-          </b-alert>
-          <b-form @submit.stop.prevent="onSubmit" @reset="onReset">
-            <b-form-group id="input-group-1" label="Email" label-for="input-1">
-              <b-form-input
-                id="email"
-                name="email"
-                v-model="form.email"
-                v-validate="{ required: true }"
-                :state="validateState('email')"
-                type="email"
-                placeholder="Enter email"
-              ></b-form-input>
-              <b-form-invalid-feedback id="email-feedback">{{
-                veeErrors.first("email")
-              }}</b-form-invalid-feedback>
-            </b-form-group>
-
-            <b-form-group
-              id="input-group-2"
-              label="Password"
-              label-for="input-2"
-            >
-              <b-form-input
-                id="password"
-                name="password"
-                v-model="form.password"
-                v-validate="{ required: true }"
-                :state="validateState('password')"
-                placeholder="Enter Password"
-                type="password"
-              ></b-form-input>
-              <b-form-invalid-feedback id="password-feedback">{{
-                veeErrors.first("password")
-              }}</b-form-invalid-feedback>
-            </b-form-group>
-            <b-button type="submit" variant="primary" class="mr-1"
-              >Submit</b-button
-            >
-            <b-button type="reset" variant="danger mr-2">Reset</b-button>
-          </b-form>
-        </b-col>
-      </b-row>
-    </b-container>
+    <v-main>
+            <v-container fluid>
+                <v-row justify="center" class="mt-15">
+                    <v-col cols="12" lg="6" md="8">
+                        <v-alert v-if="serverError" prominent type="error" class="my-3">
+                            <v-row align="center">
+                                <v-col class="grow">
+                                    {{ serverError}}
+                                </v-col>
+                            </v-row>
+                        </v-alert>
+                        <form @submit.prevent="onSubmit">
+                            <v-card>
+                                <v-card-text>
+                                    <div class="my-5">
+                                        <v-row>
+                                            <v-col cols="12" lg="6" md="6">
+                                                <v-avatar tile size="300" style="margin-top: -30px">
+                                                    <v-img src="/images/login22.svg"
+                                                           aspect-ratio="1" >
+                                                        <template v-slot:placeholder>
+                                                            <v-row class="fill-height ma-0" align="center"
+                                                                   justify="center">
+                                                                <v-progress-circular
+                                                                    indeterminate
+                                                                    dark
+                                                                ></v-progress-circular>
+                                                            </v-row>
+                                                        </template>
+                                                    </v-img>
+                                                </v-avatar>
+                                            </v-col>
+                                            <v-col cols="12" lg="6" md="6">
+                                                <v-text-field v-model="form.email" outlined label="Email *" required
+                                                              type="email"></v-text-field>
+                                                <v-text-field v-model="form.password" outlined label="Mot de passe *"
+                                                              required
+                                                              type="password"></v-text-field>
+                                                <v-btn :loading="loading" type="submit" dark large block>
+                                                    Connexion
+                                                </v-btn>
+                                            </v-col>
+                                        </v-row>
+                                        <div class="mt-5 text-center">
+                                            <v-row>
+                                                <v-col cols="12" lg="12" md="12">
+                                                    <h4 class="text-center">
+                                                        © <a href="https://site.com" target="_blank">website.com</a>
+                                                        2021 - Tous droits réservés. </h4>
+                                                </v-col>
+                                            </v-row>
+                                        </div>
+                                    </div>
+                                </v-card-text>
+                            </v-card>
+                        </form>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-main>
   </div>
 </template>
 <script>
 import { mapActions } from "vuex";
 export default {
+
   data() {
     return {
+      loading: false,
       form: {
         email: "",
         name: "",
